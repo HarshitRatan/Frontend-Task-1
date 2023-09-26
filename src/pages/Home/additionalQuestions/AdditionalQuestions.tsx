@@ -8,6 +8,7 @@ import ShortAnswer from "../questions/ShortAnswer";
 import DateQuestion from "../questions/DateQuestion";
 import NumberQuestion from "../questions/NumberQuestion";
 import FileQuestion from "../questions/FileQuestion";
+import VideoQuestion from "../questions/VideoQuestion";
 
 const AdditionalQuestions = () => {
   const [questionType, setQuestionType] = React.useState("default");
@@ -128,7 +129,12 @@ const AdditionalQuestions = () => {
             handleSaveQuestion={handleSaveQuestion}
           />
         )}
-        {isAddQuestionOpen && questionType === "video" && <>video</>}
+        {isAddQuestionOpen && questionType === "video" && (
+          <VideoQuestion
+            handleDeleteQuestion={handleDeleteQuestion}
+            handleSaveQuestion={handleSaveQuestion}
+          />
+        )}
 
         <Divider />
         <Button
