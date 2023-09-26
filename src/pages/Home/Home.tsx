@@ -1,16 +1,16 @@
 import React from "react";
 import Header from "../../components/header/Header";
-import ImageUpload from "./imageUpload/ImageUpload";
+// import ImageUpload from "./imageUpload/ImageUpload";
 import { Col, Row } from "antd";
-import PersonalInformation from "./personalInformation/PersonalInformation";
-import Profile from "./profile/Profile";
+// import PersonalInformation from "./personalInformation/PersonalInformation";
+// import Profile from "./profile/Profile";
 import AdditionalQuestions from "./additionalQuestions/AdditionalQuestions";
 
 const Home = () => {
   return (
     <div>
       <Header />
-      <Row style={{ marginTop: "5rem" }}>
+      {/* <Row style={{ marginTop: "5rem" }}>
         <Col
           span={10}
           style={{
@@ -47,7 +47,7 @@ const Home = () => {
         >
           <Profile />
         </Col>
-      </Row>
+      </Row> */}
 
       <Row style={{ marginTop: "5rem" }}>
         <Col
