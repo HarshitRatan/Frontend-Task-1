@@ -3,7 +3,7 @@ import Title from "antd/es/typography/Title";
 import React from "react";
 import FormBlock from "../../../components/formBlock/FormBlock";
 
-const PersonalInformation = () => {
+const Profile = () => {
   return (
     <>
       <Title
@@ -19,7 +19,7 @@ const PersonalInformation = () => {
           padding: "1.2rem",
         }}
       >
-        Personal Information
+       Profile
       </Title>
       <Space
         style={{
@@ -31,42 +31,24 @@ const PersonalInformation = () => {
           padding: "1rem",
         }}
       >
-        <FormBlock label="First Name"/>
-        <FormBlock label="Last Name" />
-        <FormBlock label="Email" />
         <FormBlock
-          label="Phone"
+          label="Education"
           displayAdditionalOptions={true}
-          displayAdditionalOptionsText="Internal"
+          displayAdditionalOptionsText="Mandatory"
         />
         <FormBlock
-          label="Nationality"
+          label="Experience"
           displayAdditionalOptions={true}
-          displayAdditionalOptionsText="Internal"
+          displayAdditionalOptionsText="Mandatory"
         />
         <FormBlock
-          label="Current Residence "
+          label="Resume"
           displayAdditionalOptions={true}
-          displayAdditionalOptionsText="Internal"
-        />
-        <FormBlock
-          label="ID Number"
-          displayAdditionalOptions={true}
-          displayAdditionalOptionsText="Internal"
-        />
-        <FormBlock
-          label="Date of Birth "
-          displayAdditionalOptions={true}
-          displayAdditionalOptionsText="Internal"
-        />
-        <FormBlock
-          label="Gender"
-          displayAdditionalOptions={true}
-          displayAdditionalOptionsText="Internal"
+          displayAdditionalOptionsText="Mandatory"
         />
       </Space>
     </>
   );
 };
 
-export default PersonalInformation;
+export default Profile;
