@@ -93,10 +93,6 @@ const ImageUpload = () => {
       {file.length > 0 && (
         <Space
           style={{
-            borderRadius: "5px",
-            boxShadow: "3px 3px 9px 0px rgba(190, 190, 190, 0.13)",
-            height: "15rem",
-            width: "30rem",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -106,11 +102,11 @@ const ImageUpload = () => {
         >
           <img
             src={file}
-            alt="coding---123456"
+            alt="Uploaded File"
             style={{
               height: "100%",
               width: "100%",
-              objectFit: "cover",
+              borderRadius: "1.2rem 1.2rem  0px 0px",
             }}
           />
           <Button
@@ -125,6 +121,7 @@ const ImageUpload = () => {
               fontStyle: "normal",
               fontWeight: "600",
               lineHeight: "1.5rem",
+              marginBottom: "0.5rem",
             }}
           >
             ❌ Delete & re-upload
