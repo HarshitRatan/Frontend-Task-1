@@ -3,12 +3,17 @@ import { Button, Row } from "antd";
 import TextField from "../../../components/inputs/TextField";
 
 const ParagraphQuestion = (props: any) => {
-  const { handleDeleteQuestion, handleSaveQuestion } = props;
+  const { handleDeleteQuestion, handleSaveQuestion, value, setValue } = props;
 
   return (
     <>
       <Row>
-        <TextField label="Question" placeholder="Type Here..." />
+        <TextField
+          label="Question"
+          placeholder="Type Here..."
+          value={value}
+          setValue={setValue}
+        />
         <Row
           style={{
             width: "100%",

@@ -11,8 +11,22 @@ import FileQuestion from "../questions/FileQuestion";
 import VideoQuestion from "../questions/VideoQuestion";
 
 const AdditionalQuestions = () => {
+  const [allQuestion, setAllQuestion] = React.useState([
+    {
+      question: "please tell me about yourself in less than 500 words",
+      type: "paragraph",
+    },
+  ]);
+
   const [questionType, setQuestionType] = React.useState("default");
+  const [question, setQuestion] = React.useState("");
   const [isAddQuestionOpen, setIsAddQuestionOpen] = React.useState(false);
+
+  const setAllValueToInitialValue = () => {
+    setQuestionType("default");
+    setQuestion("");
+    setIsAddQuestionOpen(false);
+  };
 
   const handleQuestionChange = (value: string) => {
     console.log(`selected ${value}`);
@@ -26,7 +40,9 @@ const AdditionalQuestions = () => {
   };
 
   const handleSaveQuestion = () => {
-    console.log("Save Question");
+    const newValue = [...allQuestion, { type: questionType, question }];
+    setAllQuestion(newValue);
+    setAllValueToInitialValue();
   };
 
   return (
@@ -56,7 +72,10 @@ const AdditionalQuestions = () => {
           padding: "1rem",
         }}
       >
-        <FormQuestionBlock />
+        {allQuestion.length > 0 &&
+          allQuestion.map((value, index) => (
+            <FormQuestionBlock key={index} {...value} />
+          ))}
 
         {isAddQuestionOpen && (
           <Row>
@@ -79,7 +98,7 @@ const AdditionalQuestions = () => {
               options={[
                 { value: "default", label: "Type of Question", disabled: true },
                 { value: "paragraph", label: "Paragraph" },
-                { value: "short", label: "Short answer" },
+                { value: "short-answer", label: "Short answer" },
                 { value: "yes-no", label: "Yes/No" },
                 { value: "dropdown", label: "Dropdown" },
                 { value: "mcq", label: "Multiple choice" },
@@ -95,18 +114,24 @@ const AdditionalQuestions = () => {
           <ParagraphQuestion
             handleDeleteQuestion={handleDeleteQuestion}
             handleSaveQuestion={handleSaveQuestion}
+            value={question}
+            setValue={setQuestion}
           />
         )}
-        {isAddQuestionOpen && questionType === "short" && (
+        {isAddQuestionOpen && questionType === "short-answer" && (
           <ShortAnswer
             handleDeleteQuestion={handleDeleteQuestion}
             handleSaveQuestion={handleSaveQuestion}
+            value={question}
+            setValue={setQuestion}
           />
         )}
         {isAddQuestionOpen && questionType === "yes-no" && (
           <YesOrNo
             handleDeleteQuestion={handleDeleteQuestion}
             handleSaveQuestion={handleSaveQuestion}
+            value={question}
+            setValue={setQuestion}
           />
         )}
         {isAddQuestionOpen && questionType === "dropdown" && <>dropdown</>}
@@ -115,18 +140,24 @@ const AdditionalQuestions = () => {
           <DateQuestion
             handleDeleteQuestion={handleDeleteQuestion}
             handleSaveQuestion={handleSaveQuestion}
+            value={question}
+            setValue={setQuestion}
           />
         )}
         {isAddQuestionOpen && questionType === "number" && (
           <NumberQuestion
             handleDeleteQuestion={handleDeleteQuestion}
             handleSaveQuestion={handleSaveQuestion}
+            value={question}
+            setValue={setQuestion}
           />
         )}
         {isAddQuestionOpen && questionType === "file" && (
           <FileQuestion
             handleDeleteQuestion={handleDeleteQuestion}
             handleSaveQuestion={handleSaveQuestion}
+            value={question}
+            setValue={setQuestion}
           />
         )}
         {isAddQuestionOpen && questionType === "video" && (

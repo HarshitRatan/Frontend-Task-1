@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "antd";
 const TextField = (props: any) => {
-  const { label, placeholder } = props;
+  const { label, placeholder, value, setValue } = props;
   return (
     <div style={{ marginTop: "1rem", width: "100%" }}>
       <label
@@ -24,6 +24,10 @@ const TextField = (props: any) => {
           marginTop: "1rem",
         }}
         placeholder={placeholder}
+        value={value}
+        onChange={(e: any) => {
+          setValue(e.target.value);
+        }}
       />
       ;
     </div>

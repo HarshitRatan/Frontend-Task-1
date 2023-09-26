@@ -3,7 +3,7 @@ import { Button, Col, Divider, Row } from "antd";
 import Title from "antd/es/typography/Title";
 import React from "react";
 
-const FormQuestionBlock = () => {
+const FormQuestionBlock = (props: any) => {
   return (
     <>
       <div>
@@ -15,9 +15,10 @@ const FormQuestionBlock = () => {
             fontSize: "1rem",
             fontStyle: "normal",
             fontWeight: "500",
+            textTransform: "capitalize",
           }}
         >
-          Paragraph
+          {props.type}
         </label>
         <Row>
           <Col
@@ -35,9 +36,10 @@ const FormQuestionBlock = () => {
                 fontSize: "20px",
                 fontStyle: "normal",
                 fontWeight: "600",
+                textTransform: "capitalize",
               }}
             >
-              Please tell me about yourself in less than 500 words
+              {props.question}
             </Title>
           </Col>
           <Col
