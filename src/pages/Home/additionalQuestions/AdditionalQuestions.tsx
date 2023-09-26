@@ -3,6 +3,11 @@ import Title from "antd/es/typography/Title";
 import React from "react";
 import FormQuestionBlock from "../../../components/formQuestionBlock/FormQuestionBlock";
 import ParagraphQuestion from "../questions/ParagraphQuestion";
+import YesOrNo from "../questions/YesOrNo";
+import ShortAnswer from "../questions/ShortAnswer";
+import DateQuestion from "../questions/DateQuestion";
+import NumberQuestion from "../questions/NumberQuestion";
+import FileQuestion from "../questions/FileQuestion";
 
 const AdditionalQuestions = () => {
   const [questionType, setQuestionType] = React.useState("default");
@@ -19,9 +24,9 @@ const AdditionalQuestions = () => {
     setQuestionType("default");
   };
 
-  const handleSaveQuestion = () =>{
+  const handleSaveQuestion = () => {
     console.log("Save Question");
-  }
+  };
 
   return (
     <>
@@ -86,15 +91,43 @@ const AdditionalQuestions = () => {
           </Row>
         )}
         {isAddQuestionOpen && questionType === "paragraph" && (
-          <ParagraphQuestion handleDeleteQuestion={handleDeleteQuestion} handleSaveQuestion={handleSaveQuestion}/>
+          <ParagraphQuestion
+            handleDeleteQuestion={handleDeleteQuestion}
+            handleSaveQuestion={handleSaveQuestion}
+          />
         )}
-        {isAddQuestionOpen && questionType === "short" && <>short answer</>}
-        {isAddQuestionOpen && questionType === "yes-no" && <>yes-no</>}
+        {isAddQuestionOpen && questionType === "short" && (
+          <ShortAnswer
+            handleDeleteQuestion={handleDeleteQuestion}
+            handleSaveQuestion={handleSaveQuestion}
+          />
+        )}
+        {isAddQuestionOpen && questionType === "yes-no" && (
+          <YesOrNo
+            handleDeleteQuestion={handleDeleteQuestion}
+            handleSaveQuestion={handleSaveQuestion}
+          />
+        )}
         {isAddQuestionOpen && questionType === "dropdown" && <>dropdown</>}
         {isAddQuestionOpen && questionType === "mcq" && <>mcq</>}
-        {isAddQuestionOpen && questionType === "date" && <>date</>}
-        {isAddQuestionOpen && questionType === "number" && <>number</>}
-        {isAddQuestionOpen && questionType === "file" && <>file</>}
+        {isAddQuestionOpen && questionType === "date" && (
+          <DateQuestion
+            handleDeleteQuestion={handleDeleteQuestion}
+            handleSaveQuestion={handleSaveQuestion}
+          />
+        )}
+        {isAddQuestionOpen && questionType === "number" && (
+          <NumberQuestion
+            handleDeleteQuestion={handleDeleteQuestion}
+            handleSaveQuestion={handleSaveQuestion}
+          />
+        )}
+        {isAddQuestionOpen && questionType === "file" && (
+          <FileQuestion
+            handleDeleteQuestion={handleDeleteQuestion}
+            handleSaveQuestion={handleSaveQuestion}
+          />
+        )}
         {isAddQuestionOpen && questionType === "video" && <>video</>}
 
         <Divider />

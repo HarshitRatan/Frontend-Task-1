@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Row } from "antd";
 import TextField from "../../../components/inputs/TextField";
 
-const ParagraphQuestion = (props: any) => {
+const NumberQuestion = (props: any) => {
   const { handleDeleteQuestion, handleSaveQuestion } = props;
 
   return (
@@ -48,4 +48,4 @@ const ParagraphQuestion = (props: any) => {
   );
 };
 
-export default ParagraphQuestion;
+export default NumberQuestion;
