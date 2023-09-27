@@ -12,20 +12,22 @@ import VideoQuestion from "../questions/VideoQuestion";
 import DropDownQuestion from "../questions/DropDownQuestion";
 import Mcq from "../questions/Mcq";
 
-const AdditionalQuestions = () => {
+const AdditionalQuestions = (props: any) => {
+  const { allQuestion, setAllQuestion } = props;
+
   // Flags State
   const [isAddQuestionOpen, setIsAddQuestionOpen] = React.useState(false);
 
-  const [allQuestion, setAllQuestion] = React.useState<Array<Object>>([
-    {
-      question: "please tell me about yourself in less than 500 words",
-      type: "paragraph",
-      disqualify: false,
-      choices: ["choice default"],
-      other: false,
-      maxChoice: 0,
-    },
-  ]);
+  // const [allQuestion, setAllQuestion] = React.useState<Array<Object>>([
+  //   {
+  //     question: "please tell me about yourself in less than 500 words",
+  //     type: "paragraph",
+  //     disqualify: false,
+  //     choices: ["choice default"],
+  //     other: false,
+  //     maxChoice: 0,
+  //   },
+  // ]);
 
   // Form Data State
   const [questionType, setQuestionType] = React.useState("default");
@@ -100,8 +102,8 @@ const AdditionalQuestions = () => {
           paddingBottom: "2.5rem",
         }}
       >
-        {allQuestion.length > 0 &&
-          allQuestion.map((value, index) => (
+        {allQuestion?.length > 0 &&
+          allQuestion?.map((value: any, index: any) => (
             <FormQuestionBlock key={index} {...value} />
           ))}
 

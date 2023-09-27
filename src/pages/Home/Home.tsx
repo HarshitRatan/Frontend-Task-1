@@ -69,6 +69,7 @@ const Home = () => {
             },
             personalQuestions: personalQuestions,
           },
+          customisedQuestions: additionalQuestions,
         },
       },
     };
@@ -91,7 +92,7 @@ const Home = () => {
     []
   );
 
-  // Personal Info
+  // Personal Info Section
   // Phone
   const [phoneInternal, setPhoneInternal] = React.useState(false);
   const [phoneShow, setPhoneShow] = React.useState(false);
@@ -124,10 +125,15 @@ const Home = () => {
   // File Upload Section
   const [coverImageURL, setCoverImage] = React.useState<String>();
 
+  // Additional Question Section
+  const [additionalQuestions, setAdditionalQuestion] = React.useState<
+    Array<Object>
+  >([]);
+
   return (
     <div>
       <Header />
-      <Row style={{ marginTop: "5rem"}}>
+      <Row style={{ marginTop: "5rem" }}>
         <Col
           span={10}
           style={{
@@ -136,9 +142,7 @@ const Home = () => {
             boxShadow: "3px 3px 14px 0px rgba(190, 190, 190, 0.30)",
           }}
         >
-          <ImageUpload
-            setCoverImage={setCoverImage}
-          />
+          <ImageUpload setCoverImage={setCoverImage} />
         </Col>
       </Row>
 
@@ -223,7 +227,10 @@ const Home = () => {
             boxShadow: "3px 3px 14px 0px rgba(190, 190, 190, 0.30)",
           }}
         >
-          <AdditionalQuestions />
+          <AdditionalQuestions
+            allQuestion={additionalQuestions}
+            setAllQuestion={setAdditionalQuestion}
+          />
         </Col>
       </Row>
 
