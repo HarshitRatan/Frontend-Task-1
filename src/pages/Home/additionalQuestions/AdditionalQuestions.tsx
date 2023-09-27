@@ -9,16 +9,18 @@ import DateQuestion from "../questions/DateQuestion";
 import NumberQuestion from "../questions/NumberQuestion";
 import FileQuestion from "../questions/FileQuestion";
 import VideoQuestion from "../questions/VideoQuestion";
+import DropDownQuestion from "../questions/DropDownQuestion";
 
 const AdditionalQuestions = () => {
   // Flags State
   const [isAddQuestionOpen, setIsAddQuestionOpen] = React.useState(false);
 
-  const [allQuestion, setAllQuestion] = React.useState([
+  const [allQuestion, setAllQuestion] = React.useState<Array<Object>>([
     {
       question: "please tell me about yourself in less than 500 words",
       type: "paragraph",
       disqualify: false,
+      choices: ["choice default"],
     },
   ]);
 
@@ -26,29 +28,37 @@ const AdditionalQuestions = () => {
   const [questionType, setQuestionType] = React.useState("default");
   const [question, setQuestion] = React.useState("");
   const [disqualify, setDisqualify] = React.useState(false);
+  const [choices, setChoices] = React.useState<Array<String>>([]);
+  const [other, setOther] = React.useState(false);
 
   const setAllValueToInitialValue = () => {
+    // Flag
+    setIsAddQuestionOpen(false);
+    // Form Value
     setQuestionType("default");
     setQuestion("");
-    setIsAddQuestionOpen(false);
     setDisqualify(false);
+    setChoices([]);
+    setOther(false);
   };
 
   const handleQuestionChange = (value: string) => {
-    console.log(`selected ${value}`);
+    // console.log(`selected ${value}`);
     setQuestionType(value);
   };
 
   const handleDeleteQuestion = () => {
-    console.log("handle Delete");
-    setIsAddQuestionOpen(false);
-    setQuestionType("default");
+    // console.log("handle Delete");
+    // setIsAddQuestionOpen(false);
+    // setQuestionType("default");
+    setAllValueToInitialValue();
   };
 
   const handleSaveQuestion = () => {
+    console.log("handle save called");
     const newValue = [
       ...allQuestion,
-      { type: questionType, question, disqualify },
+      { type: questionType, question, disqualify, choices },
     ];
     console.log("new Value :: ", newValue);
     setAllQuestion(newValue);
@@ -146,7 +156,18 @@ const AdditionalQuestions = () => {
             setDisqualify={setDisqualify}
           />
         )}
-        {isAddQuestionOpen && questionType === "dropdown" && <>dropdown</>}
+        {isAddQuestionOpen && questionType === "dropdown" && (
+          <DropDownQuestion
+            handleDeleteQuestion={handleDeleteQuestion}
+            handleSaveQuestion={handleSaveQuestion}
+            value={question}
+            setValue={setQuestion}
+            setChoices={setChoices}
+            choices={choices}
+            other={other}
+            setOther={setOther}
+          />
+        )}
         {isAddQuestionOpen && questionType === "mcq" && <>mcq</>}
         {isAddQuestionOpen && questionType === "date" && (
           <DateQuestion
