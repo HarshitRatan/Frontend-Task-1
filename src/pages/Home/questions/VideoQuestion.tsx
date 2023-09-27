@@ -4,7 +4,7 @@ import TextField from "../../../components/inputs/TextField";
 import TextArea from "antd/es/input/TextArea";
 
 const VideoQuestion = (props: any) => {
-  const { handleDeleteQuestion, handleSaveQuestion } = props;
+  const { handleDeleteQuestion, handleSaveQuestion, value, setValue } = props;
 
   const handleQuestionChange = (value: string) => {
     console.log(`selected ${value}`);
@@ -13,7 +13,12 @@ const VideoQuestion = (props: any) => {
   return (
     <>
       <Row>
-        <TextField label="Question" placeholder="Type Here..." />
+        <TextField
+          label="Question"
+          placeholder="Type Here..."
+          value={value}
+          setValue={setValue}
+        />
         <TextArea rows={4} placeholder="Description..." />
         <Row style={{ width: "100%", marginBottom: "1rem" }}>
           <Col

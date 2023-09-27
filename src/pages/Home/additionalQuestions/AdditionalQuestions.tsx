@@ -222,6 +222,8 @@ const AdditionalQuestions = () => {
           <VideoQuestion
             handleDeleteQuestion={handleDeleteQuestion}
             handleSaveQuestion={handleSaveQuestion}
+            value={question}
+            setValue={setQuestion}
           />
         )}
 
