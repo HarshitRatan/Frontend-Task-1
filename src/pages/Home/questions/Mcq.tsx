@@ -22,7 +22,8 @@ const Mcq = (props: any) => {
     []
   );
   const [error, setError] = React.useState(false);
-
+  const [saveLoading, setSaveLoading] = React.useState(false);
+  
   const handleAddOptions = () => {
     // console.log("Handle Add Options");
     // console.log("choiceOptions : ", choiceOptions);
@@ -220,8 +221,13 @@ const Mcq = (props: any) => {
               height: "2.2rem",
             }}
             onClick={() => {
-              setChoices(tempChoicesArray);
+              setSaveLoading(true);
+              setTimeout(() => {
+                setChoices(tempChoicesArray);
+                setSaveLoading(false);
+              }, 1000);
             }}
+            loading={saveLoading}
           >
             Save
           </Button>

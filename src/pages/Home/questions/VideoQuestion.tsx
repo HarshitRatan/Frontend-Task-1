@@ -5,6 +5,7 @@ import TextArea from "antd/es/input/TextArea";
 
 const VideoQuestion = (props: any) => {
   const { handleDeleteQuestion, handleSaveQuestion, value, setValue } = props;
+  const [saveLoading, setSaveLoading] = React.useState(false);
 
   const handleQuestionChange = (value: string) => {
     console.log(`selected ${value}`);
@@ -90,7 +91,14 @@ const VideoQuestion = (props: any) => {
               width: "4.5rem",
               height: "2.2rem",
             }}
-            onClick={handleSaveQuestion}
+            onClick={() => {
+              setSaveLoading(true);
+              setTimeout(() => {
+                handleSaveQuestion();
+                setSaveLoading(false);
+              }, 1000);
+            }}
+            loading={saveLoading}
           >
             Save
           </Button>

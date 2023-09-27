@@ -11,6 +11,7 @@ const YesOrNo = (props: any) => {
     disqualify,
     setDisqualify,
   } = props;
+  const [saveLoading, setSaveLoading] = React.useState(false);
   return (
     <Row>
       <TextField
@@ -83,7 +84,14 @@ const YesOrNo = (props: any) => {
             width: "4.5rem",
             height: "2.2rem",
           }}
-          onClick={handleSaveQuestion}
+          onClick={() => {
+            setSaveLoading(true);
+            setTimeout(() => {
+              handleSaveQuestion();
+              setSaveLoading(false);
+            }, 1000);
+          }}
+          loading={saveLoading}
         >
           Save
         </Button>

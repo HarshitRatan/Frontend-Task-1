@@ -4,6 +4,7 @@ import TextField from "../../../components/inputs/TextField";
 
 const ShortAnswer = (props: any) => {
   const { handleDeleteQuestion, handleSaveQuestion, value, setValue } = props;
+  const [saveLoading, setSaveLoading] = React.useState(false);
   return (
     <Row>
       <TextField
@@ -41,7 +42,14 @@ const ShortAnswer = (props: any) => {
             width: "4.5rem",
             height: "2.2rem",
           }}
-          onClick={handleSaveQuestion}
+          onClick={() => {
+            setSaveLoading(true);
+            setTimeout(() => {
+              handleSaveQuestion();
+              setSaveLoading(false);
+            }, 1000);
+          }}
+          loading={saveLoading}
         >
           Save
         </Button>
