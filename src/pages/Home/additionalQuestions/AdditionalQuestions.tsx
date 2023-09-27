@@ -21,6 +21,7 @@ const AdditionalQuestions = () => {
       type: "paragraph",
       disqualify: false,
       choices: ["choice default"],
+      other: false,
     },
   ]);
 
@@ -58,7 +59,7 @@ const AdditionalQuestions = () => {
     console.log("handle save called");
     const newValue = [
       ...allQuestion,
-      { type: questionType, question, disqualify, choices },
+      { type: questionType, question, disqualify, choices, other },
     ];
     console.log("new Value :: ", newValue);
     setAllQuestion(newValue);
