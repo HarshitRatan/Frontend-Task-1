@@ -29,11 +29,50 @@ const Home = () => {
             },
             profileQuestions: profileQuestions,
           },
+          personalInformation: {
+            firstName: {
+              internalUse: false,
+              show: true,
+            },
+            lastName: {
+              internalUse: false,
+              show: true,
+            },
+            emailId: {
+              internalUse: false,
+              show: true,
+            },
+            phoneNumber: {
+              internalUse: phoneInternal,
+              show: phoneShow,
+            },
+            nationality: {
+              internalUse: nationalityInternal,
+              show: nationalityShow,
+            },
+            currentResidence: {
+              internalUse: addInternal,
+              show: addShow,
+            },
+            idNumber: {
+              internalUse: idInternal,
+              show: idShow,
+            },
+            dateOfBirth: {
+              internalUse: dobInternal,
+              show: dobShow,
+            },
+            gender: {
+              internalUse: genderInternal,
+              show: genderShow,
+            },
+            personalQuestions: personalQuestions,
+          },
         },
       },
     };
     console.log("Post Data :: ", postData);
-    console.log("String data :: ", JSON.stringify(postData));
+    // console.log("String data :: ", JSON.stringify(postData));
   };
 
   // Profile Section
@@ -50,6 +89,36 @@ const Home = () => {
   const [profileQuestions, setProfileQuestions] = React.useState<Array<Object>>(
     []
   );
+
+  // Personal Info
+  // Phone
+  const [phoneInternal, setPhoneInternal] = React.useState(false);
+  const [phoneShow, setPhoneShow] = React.useState(false);
+
+  // Nationality
+  const [nationalityInternal, setNationalityInternal] = React.useState(false);
+  const [nationalityShow, setNationalityShow] = React.useState(false);
+
+  // Address
+  const [addInternal, setAddInternal] = React.useState(false);
+  const [addShow, setAddShow] = React.useState(false);
+
+  // ID Number
+  const [idInternal, setIDInternal] = React.useState(false);
+  const [idShow, setIdShow] = React.useState(false);
+
+  // Date of Birth
+  const [dobInternal, setDOBInternal] = React.useState(false);
+  const [dobShow, setDOBShow] = React.useState(false);
+
+  // Gender
+  const [genderInternal, setGenderInternal] = React.useState(false);
+  const [genderShow, setGenderShow] = React.useState(false);
+
+  // Personal Questions
+  const [personalQuestions, setPersonalQuestions] = React.useState<
+    Array<Object>
+  >([]);
 
   return (
     <div>
@@ -76,8 +145,36 @@ const Home = () => {
             boxShadow: "3px 3px 14px 0px rgba(190, 190, 190, 0.30)",
           }}
         >
-          <PersonalInformation />
-          <AddQuestion />
+          <PersonalInformation
+            phoneInternal={phoneInternal}
+            setPhoneInternal={setPhoneInternal}
+            phoneShow={phoneShow}
+            setPhoneShow={setPhoneShow}
+            nationalityInternal={nationalityInternal}
+            setNationalityInternal={setNationalityInternal}
+            nationalityShow={nationalityShow}
+            setNationalityShow={setNationalityShow}
+            addInternal={addInternal}
+            setAddInternal={setAddInternal}
+            addShow={addShow}
+            setAddShow={setAddShow}
+            idInternal={idInternal}
+            setIDInternal={setIDInternal}
+            idShow={idShow}
+            setIdShow={setIdShow}
+            dobInternal={dobInternal}
+            setDOBInternal={setDOBInternal}
+            dobShow={dobShow}
+            setDOBShow={setDOBShow}
+            genderInternal={genderInternal}
+            setGenderInternal={setGenderInternal}
+            genderShow={genderShow}
+            setGenderShow={setGenderShow}
+          />
+          <AddQuestion
+            allQuestion={personalQuestions}
+            setAllQuestion={setPersonalQuestions}
+          />
         </Col>
       </Row>
 
