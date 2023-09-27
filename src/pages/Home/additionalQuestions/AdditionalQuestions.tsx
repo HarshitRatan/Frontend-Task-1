@@ -10,6 +10,7 @@ import NumberQuestion from "../questions/NumberQuestion";
 import FileQuestion from "../questions/FileQuestion";
 import VideoQuestion from "../questions/VideoQuestion";
 import DropDownQuestion from "../questions/DropDownQuestion";
+import Mcq from "../questions/Mcq";
 
 const AdditionalQuestions = () => {
   // Flags State
@@ -22,6 +23,7 @@ const AdditionalQuestions = () => {
       disqualify: false,
       choices: ["choice default"],
       other: false,
+      maxChoice: 0,
     },
   ]);
 
@@ -31,6 +33,7 @@ const AdditionalQuestions = () => {
   const [disqualify, setDisqualify] = React.useState(false);
   const [choices, setChoices] = React.useState<Array<String>>([]);
   const [other, setOther] = React.useState(false);
+  const [maxChoices, setMaxChoices] = React.useState(0);
 
   const setAllValueToInitialValue = () => {
     // Flag
@@ -41,6 +44,7 @@ const AdditionalQuestions = () => {
     setDisqualify(false);
     setChoices([]);
     setOther(false);
+    setMaxChoices(0);
   };
 
   const handleQuestionChange = (value: string) => {
@@ -59,7 +63,14 @@ const AdditionalQuestions = () => {
     console.log("handle save called");
     const newValue = [
       ...allQuestion,
-      { type: questionType, question, disqualify, choices, other },
+      {
+        type: questionType,
+        question,
+        disqualify,
+        choices,
+        other,
+        maxChoice: maxChoices,
+      },
     ];
     console.log("new Value :: ", newValue);
     setAllQuestion(newValue);
@@ -169,7 +180,20 @@ const AdditionalQuestions = () => {
             setOther={setOther}
           />
         )}
-        {isAddQuestionOpen && questionType === "mcq" && <>mcq</>}
+        {isAddQuestionOpen && questionType === "mcq" && (
+          <Mcq
+            handleDeleteQuestion={handleDeleteQuestion}
+            handleSaveQuestion={handleSaveQuestion}
+            value={question}
+            setValue={setQuestion}
+            setChoices={setChoices}
+            choices={choices}
+            other={other}
+            setOther={setOther}
+            maxChoices={maxChoices}
+            setMaxChoices={setMaxChoices}
+          />
+        )}
         {isAddQuestionOpen && questionType === "date" && (
           <DateQuestion
             handleDeleteQuestion={handleDeleteQuestion}
