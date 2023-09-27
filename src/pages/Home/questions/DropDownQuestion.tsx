@@ -21,6 +21,7 @@ const DropDownQuestion = (props: any) => {
   );
   const [error, setError] = React.useState(false);
   const [saveLoading, setSaveLoading] = React.useState(false);
+  const [questionErrorFlag, setQuestionErrorFlag] = React.useState(false);
 
   const handleAddOptions = () => {
     // console.log("Handle Add Options");
@@ -54,6 +55,9 @@ const DropDownQuestion = (props: any) => {
           placeholder="Type Here..."
           value={value}
           setValue={setValue}
+          error={questionErrorFlag}
+          setError={setQuestionErrorFlag}
+          errorMessage="Question Can Not Be Empty "
         />
 
         {tempChoicesArray.length > 0 &&
@@ -128,6 +132,7 @@ const DropDownQuestion = (props: any) => {
               value={choiceOptions}
               setValue={setChoiceOptions}
               error={error}
+              setError={setError}
               errorMessage="Option Cant't be Empty"
             />
           </Col>
@@ -213,11 +218,19 @@ const DropDownQuestion = (props: any) => {
               height: "2.2rem",
             }}
             onClick={() => {
-              setSaveLoading(true);
-              setTimeout(() => {
-                setChoices(tempChoicesArray);
-                setSaveLoading(false);
-              }, 1000);
+              if (value) {
+                if (tempChoicesArray.length > 0) {
+                  setSaveLoading(true);
+                  setTimeout(() => {
+                    setChoices(tempChoicesArray);
+                    setSaveLoading(false);
+                  }, 1000);
+                } else {
+                  setError(true);
+                }
+              } else {
+                setQuestionErrorFlag(true);
+              }
             }}
             loading={saveLoading}
           >
