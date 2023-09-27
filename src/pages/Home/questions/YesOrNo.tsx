@@ -3,7 +3,14 @@ import React from "react";
 import TextField from "../../../components/inputs/TextField";
 
 const YesOrNo = (props: any) => {
-  const { handleDeleteQuestion, handleSaveQuestion, value, setValue } = props;
+  const {
+    handleDeleteQuestion,
+    handleSaveQuestion,
+    value,
+    setValue,
+    disqualify,
+    setDisqualify,
+  } = props;
   return (
     <Row>
       <TextField
@@ -36,6 +43,10 @@ const YesOrNo = (props: any) => {
               fontSize: "0.9rem",
               fontStyle: "normal",
               fontWeight: "400",
+            }}
+            checked={disqualify}
+            onChange={() => {
+              setDisqualify(!disqualify);
             }}
           >
             Disqualify candidate if the answer is no

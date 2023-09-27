@@ -11,21 +11,27 @@ import FileQuestion from "../questions/FileQuestion";
 import VideoQuestion from "../questions/VideoQuestion";
 
 const AdditionalQuestions = () => {
+  // Flags State
+  const [isAddQuestionOpen, setIsAddQuestionOpen] = React.useState(false);
+
   const [allQuestion, setAllQuestion] = React.useState([
     {
       question: "please tell me about yourself in less than 500 words",
       type: "paragraph",
+      disqualify: false,
     },
   ]);
 
+  // Form Data State
   const [questionType, setQuestionType] = React.useState("default");
   const [question, setQuestion] = React.useState("");
-  const [isAddQuestionOpen, setIsAddQuestionOpen] = React.useState(false);
+  const [disqualify, setDisqualify] = React.useState(false);
 
   const setAllValueToInitialValue = () => {
     setQuestionType("default");
     setQuestion("");
     setIsAddQuestionOpen(false);
+    setDisqualify(false);
   };
 
   const handleQuestionChange = (value: string) => {
@@ -40,7 +46,11 @@ const AdditionalQuestions = () => {
   };
 
   const handleSaveQuestion = () => {
-    const newValue = [...allQuestion, { type: questionType, question }];
+    const newValue = [
+      ...allQuestion,
+      { type: questionType, question, disqualify },
+    ];
+    console.log("new Value :: ", newValue);
     setAllQuestion(newValue);
     setAllValueToInitialValue();
   };
@@ -132,6 +142,8 @@ const AdditionalQuestions = () => {
             handleSaveQuestion={handleSaveQuestion}
             value={question}
             setValue={setQuestion}
+            disqualify={disqualify}
+            setDisqualify={setDisqualify}
           />
         )}
         {isAddQuestionOpen && questionType === "dropdown" && <>dropdown</>}
