@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Input } from "antd";
+import { message } from "antd";
+
 const TextField = (props: any) => {
-  const { label, placeholder, value, setValue } = props;
+  const { label, placeholder, value, setValue, error, errorMessage } = props;
+  const [messageApi, contextHolder] = message.useMessage();
+
+  useEffect(() => {
+    if (error) {
+      messageApi.open({
+        type: "error",
+        content: errorMessage,
+      });
+    }
+  }, [error, messageApi, errorMessage]);
+
   return (
     <div style={{ marginTop: "1rem", width: "100%" }}>
+      {contextHolder}
       <label
         htmlFor="inputField"
         style={{

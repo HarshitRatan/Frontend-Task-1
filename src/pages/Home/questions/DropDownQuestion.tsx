@@ -19,12 +19,15 @@ const DropDownQuestion = (props: any) => {
   const [tempChoicesArray, setTempChoiceArray] = React.useState<Array<String>>(
     []
   );
+  const [error, setError] = React.useState(false);
 
   const handleAddOptions = () => {
     // console.log("Handle Add Options");
     // console.log("choiceOptions : ", choiceOptions);
+    setError(false);
     if (choiceOptions.length === 0) {
       console.log("option is empty");
+      setError(true);
     } else {
       if (tempChoicesArray.length > 0) {
         setTempChoiceArray([...tempChoicesArray, choiceOptions]);
@@ -122,6 +125,8 @@ const DropDownQuestion = (props: any) => {
               placeholder="Type Here..."
               value={choiceOptions}
               setValue={setChoiceOptions}
+              error={error}
+              errorMessage="Option Cant't be Empty"
             />
           </Col>
           <Col
