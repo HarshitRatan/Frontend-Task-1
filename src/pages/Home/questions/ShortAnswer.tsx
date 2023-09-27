@@ -5,6 +5,7 @@ import TextField from "../../../components/inputs/TextField";
 const ShortAnswer = (props: any) => {
   const { handleDeleteQuestion, handleSaveQuestion, value, setValue } = props;
   const [saveLoading, setSaveLoading] = React.useState(false);
+  const [error, setError] = React.useState(false);
   return (
     <Row>
       <TextField
@@ -12,6 +13,9 @@ const ShortAnswer = (props: any) => {
         placeholder="Type Here..."
         value={value}
         setValue={setValue}
+        error={error}
+          setError={setError}
+          errorMessage="Question Can Not Be Empty"
       />
       <Row
         style={{
@@ -43,11 +47,16 @@ const ShortAnswer = (props: any) => {
             height: "2.2rem",
           }}
           onClick={() => {
-            setSaveLoading(true);
-            setTimeout(() => {
-              handleSaveQuestion();
-              setSaveLoading(false);
-            }, 1000);
+            setError(false);
+            if (value) {
+              setSaveLoading(true);
+              setTimeout(() => {
+                handleSaveQuestion();
+                setSaveLoading(false);
+              }, 1000);
+            } else {
+              setError(true);
+            }
           }}
           loading={saveLoading}
         >

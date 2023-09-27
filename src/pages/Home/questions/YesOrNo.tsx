@@ -12,6 +12,7 @@ const YesOrNo = (props: any) => {
     setDisqualify,
   } = props;
   const [saveLoading, setSaveLoading] = React.useState(false);
+  const [error, setError] = React.useState(false);
   return (
     <Row>
       <TextField
@@ -19,6 +20,9 @@ const YesOrNo = (props: any) => {
         placeholder="Type Here..."
         value={value}
         setValue={setValue}
+        error={error}
+          setError={setError}
+          errorMessage="Question Can Not Be Empty"
       />
 
       <Row
@@ -85,11 +89,16 @@ const YesOrNo = (props: any) => {
             height: "2.2rem",
           }}
           onClick={() => {
-            setSaveLoading(true);
-            setTimeout(() => {
-              handleSaveQuestion();
-              setSaveLoading(false);
-            }, 1000);
+            setError(false);
+            if (value) {
+              setSaveLoading(true);
+              setTimeout(() => {
+                handleSaveQuestion();
+                setSaveLoading(false);
+              }, 1000);
+            } else {
+              setError(true);
+            }
           }}
           loading={saveLoading}
         >

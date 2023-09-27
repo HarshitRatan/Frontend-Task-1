@@ -1,23 +1,17 @@
-import React, { useEffect } from "react";
 import { Input } from "antd";
-import { message } from "antd";
 
 const TextField = (props: any) => {
-  const { label, placeholder, value, setValue, error, errorMessage } = props;
-  const [messageApi, contextHolder] = message.useMessage();
-
-  useEffect(() => {
-    if (error) {
-      messageApi.open({
-        type: "error",
-        content: errorMessage,
-      });
-    }
-  }, [error, messageApi, errorMessage]);
+  const { label, placeholder, value, setValue, error, errorMessage, setError } =
+    props;
 
   return (
-    <div style={{ marginTop: "1rem", width: "100%" }}>
-      {contextHolder}
+    <div
+      style={{
+        marginTop: "1rem",
+        width: "100%",
+        marginBottom: "1rem",
+      }}
+    >
       <label
         htmlFor="inputField"
         style={{
@@ -41,9 +35,10 @@ const TextField = (props: any) => {
         value={value}
         onChange={(e: any) => {
           setValue(e.target.value);
+          setError(false);
         }}
       />
-      ;
+      {error && <label style={{ color: "red" }}>{errorMessage}</label>}
     </div>
   );
 };
