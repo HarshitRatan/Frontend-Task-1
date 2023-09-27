@@ -56,7 +56,6 @@ const AddQuestion = (props: any) => {
         maxChoice: maxChoices,
       },
     ];
-    console.log("Submitted Value :: ", newValue);
     setAllQuestion(newValue);
     setAllValueToInitialValue();
   };

@@ -8,9 +8,7 @@ const VideoQuestion = (props: any) => {
   const [saveLoading, setSaveLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
 
-  const handleQuestionChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
+  const handleQuestionChange = (value: string) => {};
 
   return (
     <>

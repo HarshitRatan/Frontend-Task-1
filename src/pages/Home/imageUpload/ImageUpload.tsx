@@ -7,10 +7,8 @@ const ImageUpload = (props: any) => {
   const { setCoverImage } = props;
   const [file, setFile] = React.useState("");
   const handleChange = (e: any) => {
-    console.log(e.target.files);
     try {
       setFile(URL.createObjectURL(e.target.files[0]));
-      console.log("file URL ::: ", URL.createObjectURL(e.target.files[0]));
       setCoverImage(URL.createObjectURL(e.target.files[0]));
     } catch (e) {
       console.log("No File Selected");

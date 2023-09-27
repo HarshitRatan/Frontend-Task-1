@@ -28,7 +28,6 @@ const Mcq = (props: any) => {
   const handleAddOptions = () => {
     setError(false);
     if (choiceOptions.length === 0) {
-      console.log("option is empty");
       setError(true);
     } else {
       if (tempChoicesArray.length > 0) {

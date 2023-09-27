@@ -11,7 +11,7 @@ const FormBlock = (props: any) => {
     sliderValue,
     setSliderValue,
   } = props;
-  
+
   return (
     <div>
       <div
@@ -70,7 +70,6 @@ const FormBlock = (props: any) => {
                   checked={sliderValue}
                   onChange={(checked: boolean) => {
                     setSliderValue(checked);
-                    console.log(checked);
                   }}
                 />
                 <span
