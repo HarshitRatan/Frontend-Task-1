@@ -1,5 +1,4 @@
 import { Button, Divider, Row, Select, Space } from "antd";
-import Title from "antd/es/typography/Title";
 import React from "react";
 import FormQuestionBlock from "../../../components/formQuestionBlock/FormQuestionBlock";
 import ParagraphQuestion from "../questions/ParagraphQuestion";
@@ -12,20 +11,11 @@ import VideoQuestion from "../questions/VideoQuestion";
 import DropDownQuestion from "../questions/DropDownQuestion";
 import Mcq from "../questions/Mcq";
 
-const AdditionalQuestions = () => {
+const AddQuestion = () => {
   // Flags State
   const [isAddQuestionOpen, setIsAddQuestionOpen] = React.useState(false);
 
-  const [allQuestion, setAllQuestion] = React.useState<Array<Object>>([
-    {
-      question: "please tell me about yourself in less than 500 words",
-      type: "paragraph",
-      disqualify: false,
-      choices: ["choice default"],
-      other: false,
-      maxChoice: 0,
-    },
-  ]);
+  const [allQuestion, setAllQuestion] = React.useState<Array<Object>>([]);
 
   // Form Data State
   const [questionType, setQuestionType] = React.useState("default");
@@ -74,21 +64,6 @@ const AdditionalQuestions = () => {
 
   return (
     <>
-      <Title
-        style={{
-          color: "#000",
-          fontFamily: "Poppins",
-          fontSize: "1.5rem",
-          fontStyle: "normal",
-          fontWeight: 600,
-          borderRadius: "1.2rem 1.2rem  0px 0px",
-          background: "#D0F7FA",
-          marginTop: 0,
-          padding: "1.2rem",
-        }}
-      >
-        Additional Questions
-      </Title>
       <Space
         style={{
           borderRadius: "1.2rem",
@@ -245,4 +220,4 @@ const AdditionalQuestions = () => {
   );
 };
 
-export default AdditionalQuestions;
+export default AddQuestion;
