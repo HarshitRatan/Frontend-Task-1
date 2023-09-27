@@ -14,6 +14,7 @@ const Home = () => {
         id: "497f6eca-6276-4993-bfeb-53cbbbba6f08",
         type: "applicationForm",
         attributes: {
+          coverImage: coverImageURL,
           profile: {
             education: {
               mandatory: educationMandatory,
@@ -120,10 +121,13 @@ const Home = () => {
     Array<Object>
   >([]);
 
+  // File Upload Section
+  const [coverImageURL, setCoverImage] = React.useState<String>();
+
   return (
     <div>
       <Header />
-      <Row style={{ marginTop: "5rem" }}>
+      <Row style={{ marginTop: "5rem"}}>
         <Col
           span={10}
           style={{
@@ -132,7 +136,9 @@ const Home = () => {
             boxShadow: "3px 3px 14px 0px rgba(190, 190, 190, 0.30)",
           }}
         >
-          <ImageUpload />
+          <ImageUpload
+            setCoverImage={setCoverImage}
+          />
         </Col>
       </Row>
 
