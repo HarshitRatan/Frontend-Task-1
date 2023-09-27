@@ -221,7 +221,7 @@ const DropDownQuestion = (props: any) => {
                   setTimeout(() => {
                     setChoices(tempChoicesArray);
                     setSaveLoading(false);
-                  }, 1000);
+                  }, 500);
                 } else {
                   setError(true);
                 }

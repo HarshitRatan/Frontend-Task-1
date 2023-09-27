@@ -33,7 +33,7 @@ const AddQuestion = (props: any) => {
     setDisqualify(false);
     setChoices([]);
     setOther(false);
-    setMaxChoices(0);
+    setMaxChoices(1);
   };
 
   const handleQuestionChange = (value: string) => {

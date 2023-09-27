@@ -53,7 +53,7 @@ const ShortAnswer = (props: any) => {
               setTimeout(() => {
                 handleSaveQuestion();
                 setSaveLoading(false);
-              }, 1000);
+              }, 500);
             } else {
               setError(true);
             }

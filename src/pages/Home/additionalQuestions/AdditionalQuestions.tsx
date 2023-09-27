@@ -18,17 +18,6 @@ const AdditionalQuestions = (props: any) => {
   // Flags State
   const [isAddQuestionOpen, setIsAddQuestionOpen] = React.useState(false);
 
-  // const [allQuestion, setAllQuestion] = React.useState<Array<Object>>([
-  //   {
-  //     question: "please tell me about yourself in less than 500 words",
-  //     type: "paragraph",
-  //     disqualify: false,
-  //     choices: ["choice default"],
-  //     other: false,
-  //     maxChoice: 0,
-  //   },
-  // ]);
-
   // Form Data State
   const [questionType, setQuestionType] = React.useState("default");
   const [question, setQuestion] = React.useState("");
@@ -46,7 +35,7 @@ const AdditionalQuestions = (props: any) => {
     setDisqualify(false);
     setChoices([]);
     setOther(false);
-    setMaxChoices(0);
+    setMaxChoices(1);
   };
 
   const handleQuestionChange = (value: string) => {
