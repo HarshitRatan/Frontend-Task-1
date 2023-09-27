@@ -1,13 +1,24 @@
 import React from "react";
 import Header from "../../components/header/Header";
 import ImageUpload from "./imageUpload/ImageUpload";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Row, notification } from "antd";
 import PersonalInformation from "./personalInformation/PersonalInformation";
 import Profile from "./profile/Profile";
 import AdditionalQuestions from "./additionalQuestions/AdditionalQuestions";
 import AddQuestion from "./addQuestion/AddQuestion";
+import type { NotificationPlacement } from "antd/es/notification/interface";
 
 const Home = () => {
+  // Open Notification
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (placement: NotificationPlacement) => {
+    api.info({
+      message:
+        "Data Submitted and Printed On Console. Check Console For More Details :)",
+      placement,
+    });
+  };
+
   const handlePostRequest = () => {
     const postData = {
       data: {
@@ -73,8 +84,8 @@ const Home = () => {
         },
       },
     };
-    console.log("Post Data :: ", postData);
-    // console.log("String data :: ", JSON.stringify(postData));
+    console.log("Data :: ", postData);
+    openNotification("topRight");
   };
 
   // Profile Section
@@ -132,6 +143,7 @@ const Home = () => {
 
   return (
     <div>
+      {contextHolder}
       <Header />
       <Row style={{ marginTop: "5rem" }}>
         <Col
