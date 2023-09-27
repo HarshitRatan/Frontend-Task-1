@@ -33,7 +33,7 @@ const AdditionalQuestions = () => {
   const [disqualify, setDisqualify] = React.useState(false);
   const [choices, setChoices] = React.useState<Array<String>>([]);
   const [other, setOther] = React.useState(false);
-  const [maxChoices, setMaxChoices] = React.useState(0);
+  const [maxChoices, setMaxChoices] = React.useState(1);
 
   const setAllValueToInitialValue = () => {
     // Flag
@@ -48,19 +48,14 @@ const AdditionalQuestions = () => {
   };
 
   const handleQuestionChange = (value: string) => {
-    // console.log(`selected ${value}`);
     setQuestionType(value);
   };
 
   const handleDeleteQuestion = () => {
-    // console.log("handle Delete");
-    // setIsAddQuestionOpen(false);
-    // setQuestionType("default");
     setAllValueToInitialValue();
   };
 
   const handleSaveQuestion = () => {
-    console.log("handle save called");
     const newValue = [
       ...allQuestion,
       {
@@ -72,7 +67,7 @@ const AdditionalQuestions = () => {
         maxChoice: maxChoices,
       },
     ];
-    console.log("new Value :: ", newValue);
+    console.log("Submitted Value :: ", newValue);
     setAllQuestion(newValue);
     setAllValueToInitialValue();
   };

@@ -26,8 +26,6 @@ const Mcq = (props: any) => {
   const [questionErrorFlag, setQuestionErrorFlag] = React.useState(false);
 
   const handleAddOptions = () => {
-    // console.log("Handle Add Options");
-    // console.log("choiceOptions : ", choiceOptions);
     setError(false);
     if (choiceOptions.length === 0) {
       console.log("option is empty");
@@ -46,7 +44,6 @@ const Mcq = (props: any) => {
     setSaveLoading(false);
     if (choices.length > 0) {
       handleSaveQuestion();
-      // console.log("Use Effect is called");
     }
   }, [choices, handleSaveQuestion]);
   return (
