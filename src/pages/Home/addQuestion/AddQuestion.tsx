@@ -11,11 +11,10 @@ import VideoQuestion from "../questions/VideoQuestion";
 import DropDownQuestion from "../questions/DropDownQuestion";
 import Mcq from "../questions/Mcq";
 
-const AddQuestion = () => {
+const AddQuestion = (props: any) => {
+  const { allQuestion, setAllQuestion } = props;
   // Flags State
   const [isAddQuestionOpen, setIsAddQuestionOpen] = React.useState(false);
-
-  const [allQuestion, setAllQuestion] = React.useState<Array<Object>>([]);
 
   // Form Data State
   const [questionType, setQuestionType] = React.useState("default");
@@ -75,8 +74,8 @@ const AddQuestion = () => {
           paddingBottom: "2.5rem",
         }}
       >
-        {allQuestion.length > 0 &&
-          allQuestion.map((value, index) => (
+        {allQuestion?.length > 0 &&
+          allQuestion?.map((value: any, index: number) => (
             <FormQuestionBlock key={index} {...value} />
           ))}
 

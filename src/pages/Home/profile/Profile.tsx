@@ -3,7 +3,23 @@ import Title from "antd/es/typography/Title";
 import React from "react";
 import FormBlock from "../../../components/formBlock/FormBlock";
 
-const Profile = () => {
+const Profile = (props: any) => {
+  const {
+    educationMandatory,
+    setEducationMandatory,
+    educationShow,
+    setEducationShow,
+
+    experienceMandatory,
+    setExperienceMandatory,
+    experienceShow,
+    setExperienceShow,
+
+    resumeMandatory,
+    setResumeMandatory,
+    resumeShow,
+    setResumeShow,
+  } = props;
   return (
     <>
       <Title
@@ -19,7 +35,7 @@ const Profile = () => {
           padding: "1.2rem",
         }}
       >
-       Profile
+        Profile
       </Title>
       <Space
         style={{
@@ -35,16 +51,28 @@ const Profile = () => {
           label="Education"
           displayAdditionalOptions={true}
           displayAdditionalOptionsText="Mandatory"
+          checkboxValue={educationMandatory}
+          setCheckboxValue={setEducationMandatory}
+          sliderValue={educationShow}
+          setSliderValue={setEducationShow}
         />
         <FormBlock
           label="Experience"
           displayAdditionalOptions={true}
           displayAdditionalOptionsText="Mandatory"
+          checkboxValue={experienceMandatory}
+          setCheckboxValue={setExperienceMandatory}
+          sliderValue={experienceShow}
+          setSliderValue={setExperienceShow}
         />
         <FormBlock
           label="Resume"
           displayAdditionalOptions={true}
           displayAdditionalOptionsText="Mandatory"
+          checkboxValue={resumeMandatory}
+          setCheckboxValue={setResumeMandatory}
+          sliderValue={resumeShow}
+          setSliderValue={setResumeShow}
         />
       </Space>
     </>

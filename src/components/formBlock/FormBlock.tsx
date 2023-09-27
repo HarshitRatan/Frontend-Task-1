@@ -2,9 +2,16 @@ import React from "react";
 import { Checkbox, ConfigProvider, Divider, Switch } from "antd";
 
 const FormBlock = (props: any) => {
-  const { displayAdditionalOptions, displayAdditionalOptionsText, label } =
-    props;
-  const [show, setShow] = React.useState(false);
+  const {
+    displayAdditionalOptions,
+    displayAdditionalOptionsText,
+    label,
+    checkboxValue,
+    setCheckboxValue,
+    sliderValue,
+    setSliderValue,
+  } = props;
+  
   return (
     <div>
       <div
@@ -44,6 +51,10 @@ const FormBlock = (props: any) => {
             >
               <Checkbox
                 style={{ color: "black", fontWeight: 400, fontSize: "1rem" }}
+                checked={checkboxValue}
+                onChange={() => {
+                  setCheckboxValue(!checkboxValue);
+                }}
               >
                 {displayAdditionalOptionsText}
               </Checkbox>
@@ -56,16 +67,16 @@ const FormBlock = (props: any) => {
                 }}
               >
                 <Switch
-                  checked={show}
+                  checked={sliderValue}
                   onChange={(checked: boolean) => {
-                    setShow(checked);
+                    setSliderValue(checked);
                     console.log(checked);
                   }}
                 />
                 <span
                   style={{ color: "#666", fontWeight: 400, fontSize: "1rem" }}
                 >
-                  {show ? "Show" : "Hide"}
+                  {sliderValue ? "Show" : "Hide"}
                 </span>
               </div>
             </ConfigProvider>
