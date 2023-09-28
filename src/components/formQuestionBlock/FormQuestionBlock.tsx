@@ -3,6 +3,14 @@ import { Button, Col, Divider, Row, Select } from "antd";
 import Title from "antd/es/typography/Title";
 import React, { useEffect } from "react";
 import ParagraphQuestion from "../../pages/Home/questions/ParagraphQuestion";
+import ShortAnswer from "../../pages/Home/questions/ShortAnswer";
+import YesOrNo from "../../pages/Home/questions/YesOrNo";
+// import DropDownQuestion from "../../pages/Home/questions/DropDownQuestion";
+// import Mcq from "../../pages/Home/questions/Mcq";
+import DateQuestion from "../../pages/Home/questions/DateQuestion";
+import NumberQuestion from "../../pages/Home/questions/NumberQuestion";
+import FileQuestion from "../../pages/Home/questions/FileQuestion";
+import VideoQuestion from "../../pages/Home/questions/VideoQuestion";
 
 const FormQuestionBlock = (props: any) => {
   const { allQuestion, setAllQuestion } = props;
@@ -45,6 +53,7 @@ const FormQuestionBlock = (props: any) => {
       return q.id !== id;
     });
     setAllQuestion(editedQuestionList);
+    setIsEditing(false);
   };
 
   const handleQuestionChange = (value: string) => {
@@ -160,6 +169,83 @@ const FormQuestionBlock = (props: any) => {
           </Row>
           {questionType === "paragraph" && (
             <ParagraphQuestion
+              handleDeleteQuestion={handleDeleteQuestion}
+              handleSaveQuestion={handleEditQuestion}
+              value={question}
+              setValue={setQuestion}
+            />
+          )}
+
+          {questionType === "short-answer" && (
+            <ShortAnswer
+              handleDeleteQuestion={handleDeleteQuestion}
+              handleSaveQuestion={handleEditQuestion}
+              value={question}
+              setValue={setQuestion}
+            />
+          )}
+          {questionType === "yes-no" && (
+            <YesOrNo
+              handleDeleteQuestion={handleDeleteQuestion}
+              handleSaveQuestion={handleEditQuestion}
+              value={question}
+              setValue={setQuestion}
+              disqualify={disqualify}
+              setDisqualify={setDisqualify}
+            />
+          )}
+          {/* {questionType === "dropdown" && (
+            <DropDownQuestion
+              handleDeleteQuestion={handleDeleteQuestion}
+              handleSaveQuestion={handleEditQuestion}
+              value={question}
+              setValue={setQuestion}
+              setChoices={setChoices}
+              choices={choices}
+              other={other}
+              setOther={setOther}
+            />
+          )}
+          {questionType === "mcq" && (
+            <Mcq
+              handleDeleteQuestion={handleDeleteQuestion}
+              handleSaveQuestion={handleEditQuestion}
+              value={question}
+              setValue={setQuestion}
+              setChoices={setChoices}
+              choices={choices}
+              other={other}
+              setOther={setOther}
+              maxChoices={maxChoices}
+              setMaxChoices={setMaxChoices}
+            />
+          )} */}
+          {questionType === "date" && (
+            <DateQuestion
+              handleDeleteQuestion={handleDeleteQuestion}
+              handleSaveQuestion={handleEditQuestion}
+              value={question}
+              setValue={setQuestion}
+            />
+          )}
+          {questionType === "number" && (
+            <NumberQuestion
+              handleDeleteQuestion={handleDeleteQuestion}
+              handleSaveQuestion={handleEditQuestion}
+              value={question}
+              setValue={setQuestion}
+            />
+          )}
+          {questionType === "file" && (
+            <FileQuestion
+              handleDeleteQuestion={handleDeleteQuestion}
+              handleSaveQuestion={handleEditQuestion}
+              value={question}
+              setValue={setQuestion}
+            />
+          )}
+          {questionType === "video" && (
+            <VideoQuestion
               handleDeleteQuestion={handleDeleteQuestion}
               handleSaveQuestion={handleEditQuestion}
               value={question}
