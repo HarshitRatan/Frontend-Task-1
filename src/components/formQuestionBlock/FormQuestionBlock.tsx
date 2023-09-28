@@ -27,7 +27,6 @@ const FormQuestionBlock = (props: any) => {
   const [maxChoices, setMaxChoices] = React.useState(1);
 
   const handleEditQuestion = () => {
-    console.log(" Handle edit with ID :: ", id);
     const editedQuestionList = allQuestion.map((q: any) => {
       if (id === q.id) {
         return {

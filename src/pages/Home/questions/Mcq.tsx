@@ -45,11 +45,9 @@ const Mcq = (props: any) => {
     if (!isEditing) {
       if (choices.length > 0) {
         handleSaveQuestion();
-        console.log("Normal Save Mode");
       }
     } else if (isEditing) {
       setTempChoiceArray(choices);
-      console.log("In Editing Mode");
     }
   }, [choices, handleSaveQuestion, isEditing]);
 
@@ -253,7 +251,6 @@ const Mcq = (props: any) => {
                   setQuestionErrorFlag(true);
                 }
               } else if (isEditing) {
-                console.log("is in Editing Mode Save Button");
                 if (value) {
                   if (tempChoicesArray.length > 0) {
                     setChoices(tempChoicesArray);
@@ -261,10 +258,8 @@ const Mcq = (props: any) => {
                     setTimeout(() => {
                       if (choices.length > 0) {
                         handleSaveQuestion();
-                        console.log("Edit Save Mode");
                       }
                       setSaveLoading(false);
-                      console.log("Data Saved");
                     }, 500);
                   } else {
                     setError(true);
