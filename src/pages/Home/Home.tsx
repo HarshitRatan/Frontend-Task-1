@@ -139,7 +139,17 @@ const Home = () => {
   // Additional Question Section
   const [additionalQuestions, setAdditionalQuestion] = React.useState<
     Array<Object>
-  >([]);
+  >([
+    {
+      id: 0,
+      choices: [],
+      disqualify: false,
+      maxChoice: 1,
+      other: false,
+      question: "Please tell me about yourself in less than 500 words.",
+      type: "paragraph",
+    }
+  ]);
 
   return (
     <div>

@@ -47,9 +47,11 @@ const AdditionalQuestions = (props: any) => {
   };
 
   const handleSaveQuestion = () => {
+    var id = allQuestion.length;
     const newValue = [
       ...allQuestion,
       {
+        id,
         type: questionType,
         question,
         disqualify,
@@ -92,7 +94,12 @@ const AdditionalQuestions = (props: any) => {
       >
         {allQuestion?.length > 0 &&
           allQuestion?.map((value: any, index: any) => (
-            <FormQuestionBlock key={index} {...value} />
+            <FormQuestionBlock
+              key={index}
+              {...value}
+              allQuestion={allQuestion}
+              setAllQuestion={setAllQuestion}
+            />
           ))}
 
         {isAddQuestionOpen && (
