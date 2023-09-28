@@ -13,6 +13,7 @@ const DropDownQuestion = (props: any) => {
     setChoices,
     other,
     setOther,
+    isEditing,
   } = props;
 
   const [choiceOptions, setChoiceOptions] = React.useState("");
@@ -39,10 +40,17 @@ const DropDownQuestion = (props: any) => {
 
   useEffect(() => {
     setSaveLoading(false);
-    if (choices.length > 0) {
-      handleSaveQuestion();
+    if (!isEditing) {
+      if (choices.length > 0) {
+        handleSaveQuestion();
+        console.log("Normal Save Mode");
+      }
+    } else if (isEditing) {
+      setTempChoiceArray(choices);
+      console.log("In Editing Mode");
     }
-  }, [choices, handleSaveQuestion]);
+  }, [choices, handleSaveQuestion, isEditing]);
+
   return (
     <>
       <Row>
@@ -86,6 +94,10 @@ const DropDownQuestion = (props: any) => {
                   label="Choice"
                   placeholder="Type Here..."
                   value={value}
+                  setValue={setChoiceOptions}
+                  error={error}
+                  setError={setError}
+                  errorMessage="Option Cant't be Empty"
                 />
               </Col>
               <Col
@@ -214,18 +226,40 @@ const DropDownQuestion = (props: any) => {
               height: "2.2rem",
             }}
             onClick={() => {
-              if (value) {
-                if (tempChoicesArray.length > 0) {
-                  setSaveLoading(true);
-                  setTimeout(() => {
-                    setChoices(tempChoicesArray);
-                    setSaveLoading(false);
-                  }, 500);
+              if (!isEditing) {
+                if (value) {
+                  if (tempChoicesArray.length > 0) {
+                    setSaveLoading(true);
+                    setTimeout(() => {
+                      setChoices(tempChoicesArray);
+                      setSaveLoading(false);
+                    }, 500);
+                  } else {
+                    setError(true);
+                  }
                 } else {
-                  setError(true);
+                  setQuestionErrorFlag(true);
                 }
-              } else {
-                setQuestionErrorFlag(true);
+              } else if (isEditing) {
+                console.log("is in Editing Mode Save Button");
+                if (value) {
+                  if (tempChoicesArray.length > 0) {
+                    setChoices(tempChoicesArray);
+                    setSaveLoading(true);
+                    setTimeout(() => {
+                      if (choices.length > 0) {
+                        handleSaveQuestion();
+                        console.log("Edit Save Mode");
+                      }
+                      setSaveLoading(false);
+                      console.log("Data Saved");
+                    }, 500);
+                  } else {
+                    setError(true);
+                  }
+                } else {
+                  setQuestionErrorFlag(true);
+                }
               }
             }}
             loading={saveLoading}

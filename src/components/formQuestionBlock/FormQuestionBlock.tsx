@@ -5,8 +5,8 @@ import React, { useEffect } from "react";
 import ParagraphQuestion from "../../pages/Home/questions/ParagraphQuestion";
 import ShortAnswer from "../../pages/Home/questions/ShortAnswer";
 import YesOrNo from "../../pages/Home/questions/YesOrNo";
-// import DropDownQuestion from "../../pages/Home/questions/DropDownQuestion";
-// import Mcq from "../../pages/Home/questions/Mcq";
+import DropDownQuestion from "../../pages/Home/questions/DropDownQuestion";
+import Mcq from "../../pages/Home/questions/Mcq";
 import DateQuestion from "../../pages/Home/questions/DateQuestion";
 import NumberQuestion from "../../pages/Home/questions/NumberQuestion";
 import FileQuestion from "../../pages/Home/questions/FileQuestion";
@@ -194,7 +194,7 @@ const FormQuestionBlock = (props: any) => {
               setDisqualify={setDisqualify}
             />
           )}
-          {/* {questionType === "dropdown" && (
+          {questionType === "dropdown" && (
             <DropDownQuestion
               handleDeleteQuestion={handleDeleteQuestion}
               handleSaveQuestion={handleEditQuestion}
@@ -204,6 +204,7 @@ const FormQuestionBlock = (props: any) => {
               choices={choices}
               other={other}
               setOther={setOther}
+              isEditing={isEditing}
             />
           )}
           {questionType === "mcq" && (
@@ -218,8 +219,9 @@ const FormQuestionBlock = (props: any) => {
               setOther={setOther}
               maxChoices={maxChoices}
               setMaxChoices={setMaxChoices}
+              isEditing={isEditing}
             />
-          )} */}
+          )}
           {questionType === "date" && (
             <DateQuestion
               handleDeleteQuestion={handleDeleteQuestion}
